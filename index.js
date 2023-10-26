@@ -9,6 +9,7 @@ let addMulti = document.getElementById('addMulti');
 let multiCheck = document.getElementById('multiCheck');
 let multiArea = document.getElementById('multiArea');
 let rand = document.getElementById('addRand');
+let clear = document.getElementById('clear');
 let i = 1;
 let multiMode = false;
 
@@ -33,6 +34,7 @@ addRand.addEventListener('click', function() {
     };
     i = count.value;
 });
+clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
 
 characters.forEach(char => {
     char.addEventListener('click', function() {

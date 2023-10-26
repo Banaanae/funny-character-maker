@@ -21,7 +21,7 @@ textarea, .manage {
 }
 
 .manageCtrl:not(#addMulti) {
-    width: 45%;
+    width: 30%;
 }
 
 .buttons > div {
