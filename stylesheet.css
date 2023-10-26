@@ -14,11 +14,14 @@ textarea {
 textarea, .manage {
     display: inline-block;
     vertical-align: top;
-    white-space: nowrap;
 }
 
-.manage > textarea {
+#count, #multiArea {
     height: 15px;
+}
+
+.manageCtrl:not(#addMulti) {
+    width: 45%;
 }
 
 .buttons > div {
