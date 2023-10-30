@@ -11,6 +11,10 @@ textarea {
     height: 250px;
 }
 
+h2, p, label, sup {
+    font-family: Arial;
+}
+
 textarea, .manage {
     display: inline-block;
     vertical-align: top;
