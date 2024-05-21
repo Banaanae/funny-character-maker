@@ -1,4 +1,4 @@
-waitForElm('.buttons > div:last-child > button:last-child').then((elm) => {
+waitForElm('.buttons > div:last-child > button:last-child').then(() => {
     let characters = document.querySelectorAll('button:not(.manageCtrl)');
     let textArea = document.getElementById('textArea');
     let count = document.getElementById('count')
@@ -82,14 +82,14 @@ function getRandomChar() { // TODO: Impove this
     let joinchars = 4//lineCount('./chars/join.txt')
     let char = Math.floor(Math.random() * (upchars + downchars + overlapchars + joinchars + 1))
     console.log(char + ' ' + upchars)
-    if (char <= upchars && uprng) { // TODO: I hate this must fix
+    if (char <= upchars - 1 && uprng) { // TODO: I hate this must fix
         return char
-    } else if (char <= upchars + downchars && char >= upchars && downrng) {
+    } else if (char <= upchars + downchars - 1 && char >= upchars && downrng) {
         return char
-    } else if (char <= upchars + downchars + overlapchars
+    } else if (char <= upchars + downchars + overlapchars - 1
         && char >= upchars + downchars && overlaprng) {
         return char
-    } else if (char <= upchars + downchars + overlapchars + joinchars
+    } else if (char <= upchars + downchars + overlapchars + joinchars - 1
         && char >= upchars + downchars + overlapchars && joinrng) { // Fails if only join selected, too much recursion
         return char
     } else {
