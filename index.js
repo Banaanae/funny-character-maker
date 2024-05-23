@@ -71,38 +71,28 @@ function waitForElm(selector) { // https://stackoverflow.com/a/61511955
     });
 }
 
-function getRandomChar() { // TODO: Impove this
+function getRandomChar() {
     let uprng = document.getElementById('uprng').checked
     let downrng = document.getElementById('downrng').checked
     let overlaprng = document.getElementById('overlaprng').checked
     let joinrng = document.getElementById('joinrng').checked
-    let upchars = 52//lineCount('./chars/up.txt')
-    let downchars = 40//lineCount('./chars/down.txt')
-    let overlapchars = 67//lineCount('./chars/overlap.txt')
-    let joinchars = 4//lineCount('./chars/join.txt')
+    let upchars = document.querySelector(".buttons > div:nth-child(1)").childElementCount - 1 // Minus 1 to remove h2 elem
+    let downchars = document.querySelector(".buttons > div:nth-child(2)").childElementCount - 1
+    let overlapchars = document.querySelector(".buttons > div:nth-child(3)").childElementCount - 1
+    let joinchars = document.querySelector(".buttons > div:nth-child(4)").childElementCount - 1
     let char = Math.floor(Math.random() * (upchars + downchars + overlapchars + joinchars + 1))
-    console.log(char + ' ' + upchars)
-    if (char <= upchars - 1 && uprng) { // TODO: I hate this must fix
+    console.log(upchars, downchars, overlapchars, joinchars, char)
+    if (char < upchars && uprng) {
         return char
-    } else if (char <= upchars + downchars - 1 && char >= upchars && downrng) {
+    } else if (char < upchars + downchars && char >= upchars && downrng) {
         return char
-    } else if (char <= upchars + downchars + overlapchars - 1
+    } else if (char < upchars + downchars + overlapchars
         && char >= upchars + downchars && overlaprng) {
         return char
-    } else if (char <= upchars + downchars + overlapchars + joinchars - 1
-        && char >= upchars + downchars + overlapchars && joinrng) { // Fails if only join selected, too much recursion
+    } else if (char < upchars + downchars + overlapchars + joinchars
+        && char >= upchars + downchars + overlapchars && joinrng) {
         return char
     } else {
         return getRandomChar()
-    }
-}
-
-function lineCount(file) {
-    return fetch(file)
-        .then(response => response.text())
-        .then(fileContent => {
-            const lines = fileContent.split('\n');
-            console.log(lines.length)
-            return lines.length;
-        })
+    }      
 }
