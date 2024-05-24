@@ -81,7 +81,6 @@ function getRandomChar() {
     let overlapchars = document.querySelector(".buttons > div:nth-child(3)").childElementCount - 1
     let joinchars = document.querySelector(".buttons > div:nth-child(4)").childElementCount - 1
     let char = Math.floor(Math.random() * (upchars + downchars + overlapchars + joinchars + 1))
-    console.log(upchars, downchars, overlapchars, joinchars, char)
     if (char < upchars && uprng) {
         return char
     } else if (char < upchars + downchars && char >= upchars && downrng) {
