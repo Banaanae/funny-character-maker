@@ -49,6 +49,9 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
     });
 })
 
+function applyListeners(characters) {
+    
+}
 
 function waitForElm(selector) { // https://stackoverflow.com/a/61511955
     return new Promise(resolve => {

@@ -22,6 +22,16 @@ All the different categories of characters have been sorted into their own files
 - [All Characters (HTML)](chars/AllChars_HTML.txt)
 - [All Characters (Unicode)](chars/AllChars_Unicode.txt)
 
+## Running locally
+
+Set up a http server to allow for fetching of the char files, below is an example for Node.js
+
+```sh
+npm -g http-server
+http-server
+# Then click the provided link
+```
+
 ## Credits
 
 - [R74n.com](https://c.r74n.com/combining) - Original concept and some characters

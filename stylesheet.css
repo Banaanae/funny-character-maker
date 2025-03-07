@@ -34,3 +34,7 @@ textarea, .manage {
     margin-left: 5%;
     vertical-align: top;
 }
+
+.buttons > div:last-child {
+    display: none;
+}
