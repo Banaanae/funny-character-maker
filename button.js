@@ -1,35 +1,47 @@
 /**
- * Adds the character buttons to the specified selector
+ * Adds the character buttons to the specified headers
  * @param {*} path path to the list of characters
- * @param {*} selector css selector for where the buttons go
  */
-function addBtns(path, selector) {
+function parseProfile(path) {
     fetch(path)
         .then(response => response.text())
         .then(fileContents => {
-            const lines = fileContents.split('\n');
-            lines.forEach(function(line) {
-                createButton(line.trim());
-            });
+            const profile = JSON.parse(fileContents)
+            console.log(profile)
+            console.log(profile.chars)
+
+            for (const [category, value] of Object.entries(profile.chars)) {
+                console.log(category, value);
+
+                let div = document.createElement('div')
+                let input = document.createElement('input')
+                let h2 = document.createElement('h2')
+                let label = document.createElement('label')
+
+                input.type = 'checkbox'
+                input.checked = value.checked
+                
+                label.innerHTML = '&nbsp;' + value.name
+                
+                h2.appendChild(input)
+                h2.appendChild(label)
+                
+                div.appendChild(h2)
+
+                document.querySelector('.buttons').appendChild(div)
+
+                value.buttons.forEach(function(character) {
+                    createButton(character, div);
+                });
+            };
         })
 
-    function createButton(content) {
+    function createButton(content, div) {
         const button = document.createElement('button');
         button.innerHTML = content;
-        document.querySelector(selector).appendChild(button);
+        div.appendChild(button);
     }
 }
 
-addBtns('./chars/up.txt', '.buttons > div:nth-child(1)')
-addBtns('./chars/down.txt', '.buttons > div:nth-child(2)')
-addBtns('./chars/overlap.txt', '.buttons > div:nth-child(3)')
-addBtns('./chars/join.txt', '.buttons > div:nth-child(4)')
-addBtns('./chars/spare.txt', '.buttons > div:nth-child(5)')
-
-/**
- * Adds the characters that don't display correctly
- * Can only be called via console
- */
-function debugAddSpareChars() {
-    document.querySelector('.buttons > div:nth-child(5)').style.display = "block"
-}
+parseProfile('./chars/profiles/default.json')
+//parseProfile('./chars/profiles/full.json')
