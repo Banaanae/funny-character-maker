@@ -13,7 +13,7 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
 
 function applyListeners() {
     console.log('call')
-    let characters = document.querySelectorAll('button:not(.manageCtrl)');
+    let characters = document.querySelectorAll('button:not(.manageCtrl):not(.profileBtn)');
     let textArea = document.getElementById('textArea');
     let count = document.getElementById('count')
     let addMulti = document.getElementById('addMulti');
