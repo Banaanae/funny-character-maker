@@ -1,18 +1,29 @@
 waitForElm('.buttons > div:last-child > button:last-child').then(() => {
+    // First time only
+    let clipBtn = document.getElementById('ctc');
+    let clear = document.getElementById('clear');
+
+    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
+    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
+
+
+    // Every time profile is switched
+    applyListeners()
+})
+
+function applyListeners() {
+    console.log('call')
     let characters = document.querySelectorAll('button:not(.manageCtrl)');
     let textArea = document.getElementById('textArea');
     let count = document.getElementById('count')
-    let clipBtn = document.getElementById('ctc');
     let addMulti = document.getElementById('addMulti');
     let multiCheck = document.getElementById('multiCheck');
     let multiArea = document.getElementById('multiArea');
     let rand = document.getElementById('addRand');
-    let clear = document.getElementById('clear');
     let i = 1;
     let multiMode = false;
 
     count.addEventListener('change', function() {i = count.value});
-    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
     multiCheck.addEventListener('change', function() {multiMode = multiCheck.checked});
     addMulti.addEventListener('click', function() {
         while (i != 0) {
@@ -32,7 +43,7 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
         };
         i = count.value;
     });
-    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
+    
 
     characters.forEach(char => {
         char.addEventListener('click', function() {
@@ -47,10 +58,6 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
             i = count.value;
         })
     });
-})
-
-function applyListeners(characters) {
-    
 }
 
 function waitForElm(selector) { // https://stackoverflow.com/a/61511955
