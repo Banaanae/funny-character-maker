@@ -14,13 +14,13 @@ Use combining diacritic characters to create funny and unique characters
 
 All the different categories of characters have been sorted into their own files, as well as a master file with all the characters. All these files are sorted in order of as they appear in Unicode, and formatted as HTML Decimal
 
-- [Up Characters](chars/up.txt)
-- [Down Characters](chars/down.txt)
-- [Overlap Characters](chars/overlap.txt)
-- [Join & Misc Characters](chars/join.txt)
-- [Spare Characters](chars/spare.txt)
-- [All Characters (HTML)](chars/AllChars_HTML.txt)
-- [All Characters (Unicode)](chars/AllChars_Unicode.txt)
+- [Up Characters](chars/txt/up.txt)
+- [Down Characters](chars/txt/down.txt)
+- [Overlap Characters](chars/txt/overlap.txt)
+- [Join & Misc Characters](chars/txt/join.txt)
+- [Spare Characters](chars/txt/spare.txt)
+- [All Characters (HTML)](chars/txt/AllChars_HTML.txt)
+- [All Characters (Unicode)](chars/txt/AllChars_Unicode.txt)
 
 ## Running locally
 
