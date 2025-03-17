@@ -67,6 +67,7 @@ importPrfl.addEventListener('change', function() {
             let file = files[i];
             reader.onload = function(e) {
                 let content = e.target.result
+                content.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
                 let name = file.name.replace(/(.+)\.json/, '$1')
                 let i = 1
                 while (localStorage.name) {
