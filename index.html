@@ -12,27 +12,16 @@
             <span title="This checkbox makes the characters go into the loop text box, rather than the main box."><input id="multiCheck" type="checkbox"><label for="multiCheck">Loop string: </label></span><textarea id="multiArea"></textarea>&nbsp;<button class="manageCtrl" id="addMulti" title="Appends the loop string content to the main text box">Add Loop String</button><br>
             <button class="manageCtrl" id="ctc" title="Copies the main text box's content to clipboard">Copy To Clipboard</button>&nbsp;&nbsp;<button class="manageCtrl" id="clear" title="Clears the main text box and loop string">Clear</button>&nbsp;&nbsp;<button class="manageCtrl" id="addRand" title="Add a random character from checked headings">Add Random</button><br>
             <p>Note: All these characters where tested in the Arial font, behaviour may differ.</p>
-            <p>Got many of these characters from <a href="https://c.r74n.com/combining">R74n.com</a> and <a href="https://unicodeplus.com/">UnicodePlus</a> &lt;3</p>
-            <sup>Support for other fonts might come later</sup>
+            <p>Got many of these characters from <a href="https://c.r74n.com/combining">R74n.com</a> and <a href="https://unicodeplus.com/combining">UnicodePlus</a> &lt;3</p>
+            <div class="profileDDL">
+                <button class="profileBtn">Default</button>
+                <div class="profileList"></div>
+            </div>
+            <input type="file" accept=".json" multiple id="import" />
         </div>
-        <div class="buttons">
-            <div>
-                <h2><input type="checkbox" id="uprng" checked><label for="uprng">&nbsp;Stackable (Up)</label></h2>
-            </div>
-            <div>
-                <h2><input type="checkbox" id="downrng" checked><label for="downrng">&nbsp;Stackable (Down)</label></h2>
-            </div>
-            <div>
-                <h2><input type="checkbox" id="overlaprng" checked><label for="overlaprng">&nbsp;Overlap</label></h2>
-            </div>
-            <div>
-                <h2><input type="checkbox" id="joinrng"><label for="joinrng">&nbsp;Joiners & Misc.</label></h2>
-            </div>
-            <div>
-                <h2>Spare</h2>
-            </div>
-        </div>
-        <script src="./button.js" defer></script>
-        <script src="./index.js" defer></script>
+        <div class="buttons"></div>
+        <script src="./js/button.js" defer></script>
+        <script src="./js/index.js" defer></script>
+        <script src="./js/profiles.js" defer></script>
     </body>
 </html>

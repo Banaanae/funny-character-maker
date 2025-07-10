@@ -1,18 +1,28 @@
 waitForElm('.buttons > div:last-child > button:last-child').then(() => {
-    let characters = document.querySelectorAll('button:not(.manageCtrl)');
+    // First time only
+    let clipBtn = document.getElementById('ctc');
+    let clear = document.getElementById('clear');
+
+    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
+    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
+
+
+    // Every time profile is switched
+    applyListeners()
+})
+
+function applyListeners() {
+    let characters = document.querySelectorAll('button:not(.manageCtrl):not(.profileBtn)');
     let textArea = document.getElementById('textArea');
     let count = document.getElementById('count')
-    let clipBtn = document.getElementById('ctc');
     let addMulti = document.getElementById('addMulti');
     let multiCheck = document.getElementById('multiCheck');
     let multiArea = document.getElementById('multiArea');
     let rand = document.getElementById('addRand');
-    let clear = document.getElementById('clear');
     let i = 1;
     let multiMode = false;
 
     count.addEventListener('change', function() {i = count.value});
-    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
     multiCheck.addEventListener('change', function() {multiMode = multiCheck.checked});
     addMulti.addEventListener('click', function() {
         while (i != 0) {
@@ -24,15 +34,15 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
     addRand.addEventListener('click', function() {
         while (i != 0) {
             if (!multiMode) {
-                textArea.value += characters[getRandomChar()].innerText;
+                textArea.value += characters[getRandomChar('cat')].innerText;
             } else {
-                multiArea.value += characters[getRandomChar()].innerText;
+                multiArea.value += characters[getRandomChar('cat')].innerText;
             }
             i--
         };
         i = count.value;
     });
-    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
+    
 
     characters.forEach(char => {
         char.addEventListener('click', function() {
@@ -47,10 +57,6 @@ waitForElm('.buttons > div:last-child > button:last-child').then(() => {
             i = count.value;
         })
     });
-})
-
-function applyListeners(characters) {
-    
 }
 
 function waitForElm(selector) { // https://stackoverflow.com/a/61511955
@@ -74,27 +80,18 @@ function waitForElm(selector) { // https://stackoverflow.com/a/61511955
     });
 }
 
-function getRandomChar() {
-    let uprng = document.getElementById('uprng').checked
-    let downrng = document.getElementById('downrng').checked
-    let overlaprng = document.getElementById('overlaprng').checked
-    let joinrng = document.getElementById('joinrng').checked
-    let upchars = document.querySelector(".buttons > div:nth-child(1)").childElementCount - 1 // Minus 1 to remove h2 elem
-    let downchars = document.querySelector(".buttons > div:nth-child(2)").childElementCount - 1
-    let overlapchars = document.querySelector(".buttons > div:nth-child(3)").childElementCount - 1
-    let joinchars = document.querySelector(".buttons > div:nth-child(4)").childElementCount - 1
-    let char = Math.floor(Math.random() * (upchars + downchars + overlapchars + joinchars + 1))
-    if (char < upchars && uprng) {
-        return char
-    } else if (char < upchars + downchars && char >= upchars && downrng) {
-        return char
-    } else if (char < upchars + downchars + overlapchars
-        && char >= upchars + downchars && overlaprng) {
-        return char
-    } else if (char < upchars + downchars + overlapchars + joinchars
-        && char >= upchars + downchars + overlapchars && joinrng) {
-        return char
-    } else {
-        return getRandomChar()
-    }      
+function getRandomChar(ranType) {
+    let categories = document.querySelector(".buttons").children
+    let totalChars = 0
+    for (var i = 0; i < categories.length; i++) {
+        totalChars += categories[i].childElementCount - 1 // Minus 1 to remove h2 elem
+    }
+    let chosenCat;
+    let catFound = false
+    while (!catFound) {
+        chosenCat = Math.floor(Math.random() * categories.length)
+        if (categories[chosenCat].children[0].children[0].checked)
+            catFound = true
+    }
+    return Math.floor(Math.random() * categories[chosenCat].childElementCount)
 }

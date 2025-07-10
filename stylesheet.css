@@ -1,4 +1,4 @@
-button:not(.manageCtrl) {
+button:not(.manageCtrl):not(.profileBtn) {
     width: 40px;
     height: 40px;
     font-family: Arial, Helvetica, sans-serif;
@@ -35,6 +35,45 @@ textarea, .manage {
     vertical-align: top;
 }
 
-.buttons > div:last-child {
+.profileBtn { /* https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_button */
+    background-color: #e9e9ed;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #8f8f9d;
+}
+  
+.profileDDL {
+    position: relative;
+    display: inline-block;
+}
+  
+.profileList {
     display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.profileList a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.profileList a:hover {
+    background-color: #f1f1f1
+}
+  
+.profileDDL:hover .profileList {
+    display: block;
+}
+  
+.profileDDL:hover .profileBtn {
+    background-color: #d0d0d7;
 }
