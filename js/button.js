@@ -14,12 +14,8 @@ function parseProfile(path) {
 
     function createProfile(fileContents) {
         const profile = JSON.parse(fileContents)
-        console.log(profile)
-        console.log(profile.chars)
 
         for (const [category, value] of Object.entries(profile.chars)) {
-            console.log(category, value);
-
             let div = document.createElement('div')
             let input = document.createElement('input')
             let h2 = document.createElement('h2')

@@ -41,7 +41,6 @@ function createProfileOption(profile) {
         // TODO: Not hard coded
         if (document.querySelector('.profileList').childElementCount < 3) {
             prflLink.addEventListener('click', function (elem) {
-                console.log(elem)
                 document.querySelector('.profileBtn').innerText = elem.target.innerText
                 switchProfile('../chars/profiles/' + elem.target.id + '.json')
             })
