@@ -27,6 +27,8 @@ All the different categories of characters have been sorted into their own files
 
 Many of these characters have been sorted quite subjectively, so many of these characters have different interactions between speccific characters. I have attempted to sort them by their most common behaviour, but support between devices varies.
 
+More specifically, some characters may behave differently when the preceeding character is a whitespace (or nothing), I sorted based on the behaviour of when a latin letter was preceeding. Additionally many characters won't render correctly, instead falling back to a box with its unicode code. Problematic characters were placed into the "Spare" category (under the full profile) 
+
 ## Running locally
 
 Set up a http server to allow for fetching of the char files, below is an example for Node.js
