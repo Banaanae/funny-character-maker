@@ -7,9 +7,9 @@ function switchProfile(newProfile) {
 // Populating profile dropdown
 
 // Add built in
-createProfileOption('../chars/profiles/default.json')
-createProfileOption('../chars/profiles/full.json')
-createProfileOption('../chars/profiles/unicode.json')
+createProfileOption('./chars/profiles/default.json')
+createProfileOption('./chars/profiles/full.json')
+createProfileOption('./chars/profiles/unicode.json')
 
 // Add custom profiles from local storage
 for (const [profile] of Object.entries(localStorage)) {
