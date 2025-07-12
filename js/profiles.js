@@ -42,7 +42,7 @@ function createProfileOption(profile) {
         if (document.querySelector('.profileList').childElementCount < 3) {
             prflLink.addEventListener('click', function (elem) {
                 document.querySelector('.profileBtn').innerText = elem.target.innerText
-                switchProfile('../chars/profiles/' + elem.target.id + '.json')
+                switchProfile('./chars/profiles/' + elem.target.id + '.json')
             })
         } else {
             prflLink.addEventListener('click', function (elem) {
