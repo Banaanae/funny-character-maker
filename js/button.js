@@ -51,7 +51,7 @@ function parseProfile(path) {
 
         function createButton(content, div) {
             const button = document.createElement('button');
-            button.innerHTML = content;
+            button.innerHTML = content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
             div.appendChild(button);
         }
     }
