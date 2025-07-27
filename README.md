@@ -39,6 +39,24 @@ http-server
 # Then click the provided link
 ```
 
+## Creating a profile
+
+Profiles are json-formatted files which list out all the categories and characters, below is an example:
+```json
+{
+    "name":"Example", // Name shown in the profile switcher
+    "chars": {
+        "category-name": { // Only used internally, but should be similar to heading below
+            "name": "Category Name", // Name for the category heading
+            "checked": true, // If the checkbox to include in random is ticked by default
+            "buttons": ["&#123;", "&tab;", "String"] // Buttons to add in html format
+        }
+    }
+}
+```
+
+TODO: Instructions
+
 ## Credits
 
 - [R74n.com](https://c.r74n.com/combining) - Original concept and some characters
