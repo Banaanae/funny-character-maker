@@ -16,6 +16,7 @@ for (const [profile] of Object.entries(localStorage)) {
     createProfileOption(profile)
 }
 
+let selectedProfile = './chars/profiles/default.json';
 function createProfileOption(profile) {
     fetch(profile)
         .then(response => response.text())
@@ -42,12 +43,14 @@ function createProfileOption(profile) {
         if (document.querySelector('.profileList').childElementCount < 3) {
             prflLink.addEventListener('click', function (elem) {
                 document.querySelector('.profileBtn').innerText = elem.target.innerText
-                switchProfile('./chars/profiles/' + elem.target.id + '.json')
+                selectedProfile = './chars/profiles/' + elem.target.id + '.json'
+                switchProfile(selectedProfile)
             })
         } else {
             prflLink.addEventListener('click', function (elem) {
                 document.querySelector('.profileBtn').innerText = elem.target.innerText
-                switchProfile(elem.target.id)
+                selectedProfile = elem.target.id
+                switchProfile(selectedProfile)
             })
         }
     
@@ -79,4 +82,29 @@ importPrfl.addEventListener('change', function() {
             reader.readAsText(file)
         }
     }
+})
+
+document.getElementById('export').addEventListener('click', async function() {
+    let dataStr;
+    let fileName = selectedProfile
+    await fetch(selectedProfile)
+        .then(response => response.text())
+        .then(fileContents => {
+            fileName = fileName.match('[^/]*\.json')[0]
+            dataStr = fileContents
+        })
+        .catch(e => {
+            dataStr = JSON.stringify(localStorage[selectedProfile])
+            console.log(dataStr.length)
+        })
+    const blob = new Blob([dataStr], { type: "application/json" })
+    const url = URL.createObjectURL(blob)
+
+    const a = document.createElement("a")
+    a.href = url
+    a.download = fileName
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
 })

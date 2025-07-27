@@ -1,4 +1,4 @@
-button:not(.manageCtrl):not(.profileBtn) {
+.buttons button {
     width: 40px;
     height: 40px;
     font-family: Arial, Helvetica, sans-serif;
