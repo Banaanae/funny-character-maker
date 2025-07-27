@@ -1,16 +1,3 @@
-waitForElm('.buttons > div:last-child > button:last-child').then(() => {
-    // First time only
-    let clipBtn = document.getElementById('ctc');
-    let clear = document.getElementById('clear');
-
-    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
-    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
-
-
-    // Every time profile is switched
-    applyListeners()
-})
-
 function applyListeners() {
     let characters = document.querySelectorAll('.buttons button');
     let textArea = document.getElementById('textArea');
@@ -56,27 +43,6 @@ function applyListeners() {
             };
             i = count.value;
         })
-    });
-}
-
-function waitForElm(selector) { // https://stackoverflow.com/a/61511955
-    return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelector(selector)) {
-                observer.disconnect();
-                resolve(document.querySelector(selector));
-            }
-        });
-
-        // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
     });
 }
 

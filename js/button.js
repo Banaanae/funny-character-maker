@@ -3,14 +3,25 @@
  * @param {*} path path to the list of characters
  */
 function parseProfile(path) {
-    fetch(path)
-        .then(response => response.text())
-        .then(fileContents => {
-            createProfile(fileContents)
-        })
-        .catch(e => {
-            createProfile(localStorage[path])
-        })
+    return new Promise((resolve, reject) => {
+        fetch(path)
+            .then(response => {
+                return response.text()
+            })
+            .then(fileContents => {
+                createProfile(fileContents)
+                resolve()
+            })
+            .catch(e => {
+                const localData = localStorage[path];
+                if (localData) {
+                    createProfile(localData)
+                    resolve()
+                } else {
+                    reject(new Error("Profile doesn't exist?"))
+                }
+            })
+    })
 
     function createProfile(fileContents) {
         const profile = JSON.parse(fileContents)
@@ -25,18 +36,17 @@ function parseProfile(path) {
             input.checked = value.checked
             
             label.innerHTML = '&nbsp;' + value.name
-            
+
             h2.appendChild(input)
             h2.appendChild(label)
-            
-            div.appendChild(h2)
 
+            div.appendChild(h2)
             document.querySelector('.buttons').appendChild(div)
 
             value.buttons.forEach(function(character) {
                 createButton(character, div);
-            });
-        };
+            })
+        }
 
         function createButton(content, div) {
             const button = document.createElement('button');
@@ -46,5 +56,18 @@ function parseProfile(path) {
     }
 }
 
-parseProfile('./chars/profiles/default.json')
-//parseProfile('./chars/profiles/full.json')
+async function initialiseProfile() {
+    await parseProfile('./chars/profiles/default.json')
+
+    // First time only
+    let clipBtn = document.getElementById('ctc')
+    let clear = document.getElementById('clear')
+
+    clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
+    clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
+
+    // Every time profile is switched
+    applyListeners();
+}
+
+initialiseProfile();

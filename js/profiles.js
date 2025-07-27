@@ -1,7 +1,7 @@
-function switchProfile(newProfile) {
+async function switchProfile(newProfile) {
     document.querySelector('.buttons').innerHTML = ''
-    parseProfile(newProfile)
-    waitForElm('.buttons > div:last-child > button:last-child').then(applyListeners)
+    await parseProfile(newProfile)
+    applyListeners()
 }
 
 // Populating profile dropdown
