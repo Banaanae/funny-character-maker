@@ -1,5 +1,5 @@
 async function switchProfile(newProfile) {
-    document.querySelector('.buttons').innerHTML = ''
+    document.querySelector('.buttons').replaceChildren()
     await parseProfile(newProfile)
     applyListeners()
 }

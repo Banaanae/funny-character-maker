@@ -1,3 +1,4 @@
+let multiMode = false;
 /**
  * Adds the character buttons to the specified headers
  * @param {*} path path to the list of characters
@@ -65,6 +66,23 @@ async function initialiseProfile() {
 
     clear.addEventListener('click', function() {textArea.value = multiArea.value = ''})
     clipBtn.addEventListener('click', function() {navigator.clipboard.writeText(textArea.value)});
+
+    let textArea = document.getElementById('textArea');
+    let count = document.getElementById('count')
+    let addMulti = document.getElementById('addMulti');
+    let multiCheck = document.getElementById('multiCheck');
+    let multiArea = document.getElementById('multiArea');
+    let i = 1;
+
+    count.addEventListener('change', function() {i = count.value});
+    multiCheck.addEventListener('change', function() {multiMode = multiCheck.checked});
+    addMulti.addEventListener('click', function() {
+        while (i != 0) {
+            textArea.value += multiArea.value;
+            i--
+        }
+        i = count.value;
+    });
 
     // Every time profile is switched
     applyListeners();
