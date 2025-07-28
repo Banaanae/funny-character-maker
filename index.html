@@ -6,11 +6,11 @@
     </head>
     <body>
         <textarea spellcheck="false" id="textArea"></textarea>
-        <div class="manage">
+        <div id="manage" class="show">
             <h2>Manage</h2>
             <nobr><label for="count" title="The amount of times the character, loop string or random chars should be added">Amount of characters to add</label>&nbsp;<input type="number" id="count" value="1" min="1"></nobr><br>
             <span title="This checkbox makes the characters go into the loop text box, rather than the main box."><input id="multiCheck" type="checkbox"><label for="multiCheck">Loop string: </label></span><textarea id="multiArea"></textarea>&nbsp;<button class="manageCtrl" id="addMulti" title="Appends the loop string content to the main text box">Add Loop String</button><br>
-            <button class="manageCtrl" id="ctc" title="Copies the main text box's content to clipboard">Copy To Clipboard</button>&nbsp;&nbsp;<button class="manageCtrl" id="clear" title="Clears the main text box and loop string">Clear</button><br>
+            <button class="manageCtrl" id="ctc" title="Copies the main text box's content to clipboard">Copy To Clipboard</button>&nbsp;&nbsp;<button class="manageCtrl" id="clear" title="Clears the main text box and loop string">Clear</button>&nbsp;&nbsp;<button class="manageCtrl" id="manage2Editor" title="Switches to the profile editor">Open Editor</button><br>
             <button class="manageCtrl" id="addRand" title="Add a random character from checked headings">Add Random</button>
             <select>
                 <option value="cat" >Categories - Equal distribution of selected categories</option>
@@ -25,9 +25,18 @@
             <input type="file" accept=".json" multiple id="import" />
             <button id="export">Export active profile</button>
         </div>
+        <div id="editor" class="hide">
+            <h2>Editor</h2>
+            <ol>
+                <li>Instructions todo</li>
+            </ol>
+            <p>See <a href="https://github.com/Banaanae/funny-character-maker#creating-a-profile">here</a> for a full guide</p>
+            <button class="manageCtrl" id="editor2Manage" title="Switches to the profile management">Open Management</button>&nbsp;&nbsp;<button class="manageCtrl" id="saveEditedProfile" title="Saves the modified profile to the profile switcher">Save profile</button>
+        </div>
         <div class="buttons"></div>
         <script src="./js/button.js" defer></script>
         <script src="./js/index.js" defer></script>
         <script src="./js/profiles.js" defer></script>
+        <script src="./js/editor.js" defer></script>
     </body>
 </html>

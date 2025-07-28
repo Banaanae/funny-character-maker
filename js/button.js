@@ -29,6 +29,7 @@ function parseProfile(path) {
 
         for (const [category, value] of Object.entries(profile.chars)) {
             let div = document.createElement('div')
+            div.setAttribute("name", category)
             let input = document.createElement('input')
             let h2 = document.createElement('h2')
             let label = document.createElement('label')

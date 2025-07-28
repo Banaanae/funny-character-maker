@@ -15,8 +15,19 @@ h2, p, label, sup {
     font-family: Arial;
 }
 
-textarea, .manage {
+textarea {
     display: inline-block;
+}
+
+.show {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+
+textarea, #editor, #manage {
     vertical-align: top;
 }
 
