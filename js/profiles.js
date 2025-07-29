@@ -26,6 +26,10 @@ function createProfileOption(profile) {
         .catch(() => { // else local storage
             createOption(localStorage[profile], profile)
         })
+        .finally(() => {
+            let editorNewName = document.getElementById("newName")
+            editorNewName.innerText = getAvailableName()
+        })
 
     function createOption(fileContents, localName = '') {
         let prflLink = document.createElement('a')
@@ -95,7 +99,6 @@ document.getElementById('export').addEventListener('click', async function() {
         })
         .catch(e => {
             dataStr = JSON.stringify(localStorage[selectedProfile])
-            console.log(dataStr.length)
         })
     const blob = new Blob([dataStr], { type: "application/json" })
     const url = URL.createObjectURL(blob)

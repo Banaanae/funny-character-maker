@@ -5,6 +5,11 @@
     font-size: x-large;
 }
 
+
+.buttons button > input {
+    width: 70%;
+}
+
 textarea {
     font-family: Arial, Helvetica, sans-serif;
     width: 50%;
