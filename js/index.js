@@ -16,10 +16,9 @@ function applyListeners() {
     }
 
     // Clone and replace random button to remove listeners (removeEventListeners doesnt work for some reason)
-    var newRand = rand.cloneNode(true);
+    let newRand = rand.cloneNode(true);
     rand.parentNode.replaceChild(newRand, rand)
-    rand = document.getElementById('addRand')
-    rand.addEventListener('click', addRandomChar)
+    newRand.addEventListener('click', addRandomChar)
 
     characters.forEach(char => {
         char.addEventListener('click', function() {
