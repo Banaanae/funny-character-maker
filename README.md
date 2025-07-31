@@ -55,7 +55,24 @@ Profiles are json-formatted files which list out all the categories and characte
 }
 ```
 
-TODO: Instructions
+There are 2 ways I create profiles, using the built-in editor or a full editor using a text editor.
+
+### Built-in Editor
+
+This is best for small edits of an existing profiles, it can:
+- Delete buttons (right click)
+- Edit button contents (double click)
+- Edit default random categories (check / uncheck the boxes)
+
+After making desired changes you can save a copy or overwrite the profile. (Note: Built-in profiles cannot be overwritten)
+
+### Full Editor
+
+This for when you when you have a large amount of characters to add / change, or want to make your own categories.
+
+If you know what category each button should belong to, simply add them all following the conventions in above example (see the [full profile](chars/profiles/full.json) for a real world example).
+
+If not, place all characters in a "To Sort" category, then sort based on desired look, function etc.
 
 ## Credits
 
