@@ -66,13 +66,15 @@ function editText(event) {
 }
 
 function removeButton(event) {
-    if (changeLog.usingRevision + 1 !== changeLog.changes.length)
+    if (changeLog.usingRevision + 1 !== changeLog.changes.length && !event.hasOwnProperty("fake"))
         changeLog.changes.splice(changeLog.usingRevision + 1)
 
-    changeLog.changes.push({ type: "removed", cat: event.target.parentElement.getAttribute("name"), button: event.target.getAttribute("index"), text: event.target.innerText })
-    event.target.remove()
+    if (!event.hasOwnProperty("fake")) {
+        changeLog.changes.push({ type: "removed", cat: event.target.parentElement.getAttribute("name"), button: event.target.getAttribute("index"), text: event.target.innerText })
+        changeLog.usingRevision++
+    }
 
-    changeLog.usingRevision++
+    event.target.remove()
     changesAfterSave = true
 }
 
@@ -119,8 +121,7 @@ function undo() {
     if (changeLog.usingRevision === -1)
         return
     
-    let toUndo = changeLog.changes[changeLog.usingRevision]
-    let button
+    let toUndo = changeLog.changes[changeLog.usingRevision], button
     if (toUndo.type === "removed") {
         button = document.createElement("button")
         button.innerText = toUndo.text
@@ -129,9 +130,11 @@ function undo() {
             document.querySelector(`div[name="${toUndo.cat}"]`).appendChild(button)
         } else {
             let i = 1
-            while (toUndo.button < document.querySelector(`div[name="${toUndo.cat}"] > button:nth-last-child(${i})`).getAttribute("index")) {
-                i = i + 1
-            }
+            try {
+                while (toUndo.button < Number(document.querySelector(`div[name="${toUndo.cat}"] > button:nth-last-child(${i})`).getAttribute("index"))) {
+                    i = i + 1
+                }
+            } catch {}
             document.querySelector(`div[name="${toUndo.cat}"]`).insertBefore(button, document.querySelector(`div[name="${toUndo.cat}"] > button:nth-last-child(${--i})`))
         }
     } else if (toUndo.type === "renamed") {
@@ -144,7 +147,7 @@ function undo() {
 }
 
 function redo() {
-    if (changeLog.usingRevision === changeLog.changes.length)
+    if (changeLog.usingRevision + 1 === changeLog.changes.length)
         return
     
     changeLog.usingRevision++
@@ -153,11 +156,12 @@ function redo() {
     let event = {}
     event.parent = document.querySelector(`div[name="${toRedo.cat}"]`)
     event.target = event.parent.querySelector(`button[index="${toRedo.button}"]`)
+    event.fake = true
 
     if (toRedo.type === "removed")
         removeButton(event)
     else if (toRedo.type === "renamed")
-        editText(event)
+        document.querySelector(`div[name="${toRedo.cat}"] > button[index="${toRedo.button}"]`).innerText = toRedo.newtext
 }
 
 function getAvailableName() {
