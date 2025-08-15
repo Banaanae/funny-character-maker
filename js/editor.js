@@ -18,8 +18,8 @@ document.getElementById("manage2Editor").addEventListener("click", function() {
 })
 
 document.getElementById("editor2Manage").addEventListener("click", function() {
-    if (changeLog.changes.length > 0 && changesAfterSave)
-        alert("You have unsaved changes!\nWhile they will be usuable, they won't stay next time you reload this page\nSave now?") // TODO: UI
+    //if (changeLog.changes.length > 0 && changesAfterSave)
+    //    alert("You have unsaved changes!\nWhile they will be usuable, they won't stay next time you reload this page\nSave now?") // TODO: UI
 
     document.getElementById("editor").classList.replace("show", "hide")
     document.getElementById("manage").classList.replace("hide", "show")
