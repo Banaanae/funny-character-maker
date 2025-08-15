@@ -102,8 +102,20 @@ function applyChanges() {
                 dataStr.chars[change.cat].buttons[change.button] = change.newtext
             }
         }
-        localStorage.test = JSON.stringify(dataStr)
-        alert("Saved profile to [name]" )
+
+        let prflNewName = document.getElementById('newName')
+        let i = 1, savename = ''
+        dataStr.name = prflNewName.value
+        if (localStorage.hasOwnProperty(prflNewName.value)) {
+            while (localStorage.hasOwnProperty(prflNewName.value + i))
+                i = i + 1
+            savename = prflNewName.value + i
+        } else {
+            savename = prflNewName.value
+        }
+        localStorage[savename] = JSON.stringify(dataStr)
+        createProfileOption(savename)
+        alert("Successfully saved profile")
     }
 }
 

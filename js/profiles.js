@@ -26,10 +26,6 @@ function createProfileOption(profile) {
         .catch(() => { // else local storage
             createOption(localStorage[profile], profile)
         })
-        .finally(() => {
-            let editorNewName = document.getElementById("newName")
-            editorNewName.innerText = getAvailableName()
-        })
 
     function createOption(fileContents, localName = '') {
         let prflLink = document.createElement('a')
