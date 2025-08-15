@@ -36,6 +36,10 @@ textarea, #editor, #manage {
     vertical-align: top;
 }
 
+#editor {
+    min-width: 40%;
+}
+
 #count, #multiArea {
     height: 15px;
 }

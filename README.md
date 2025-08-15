@@ -62,7 +62,7 @@ There are 2 ways I create profiles, using the built-in editor or a full editor u
 This is best for small edits of an existing profiles, it can:
 - Delete buttons (right click)
 - Edit button contents (double click)
-- Edit default random categories (check / uncheck the boxes)
+<!-- - Edit default random categories (check / uncheck the boxes) -->
 
 After making desired changes you can save a copy or overwrite the profile. (Note: Built-in profiles cannot be overwritten)
 
