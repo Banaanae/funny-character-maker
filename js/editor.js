@@ -70,6 +70,7 @@ function removeButton(event) {
         changeLog.changes.splice(changeLog.usingRevision + 1)
 
     if (!event.hasOwnProperty("fake")) {
+        event.preventDefault()
         changeLog.changes.push({ type: "removed", cat: event.target.parentElement.getAttribute("name"), button: event.target.getAttribute("index"), text: event.target.innerText })
         changeLog.usingRevision++
     }
@@ -115,6 +116,7 @@ function applyChanges() {
         }
         localStorage[savename] = JSON.stringify(dataStr)
         createProfileOption(savename)
+        changesAfterSave = false
         alert("Successfully saved profile")
     }
 }
