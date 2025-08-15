@@ -29,6 +29,7 @@ function parseProfile(path) {
 
         for (const [category, value] of Object.entries(profile.chars)) {
             let div = document.createElement('div')
+            div.setAttribute("name", category)
             let input = document.createElement('input')
             let h2 = document.createElement('h2')
             let label = document.createElement('label')
@@ -44,14 +45,17 @@ function parseProfile(path) {
             div.appendChild(h2)
             document.querySelector('.buttons').appendChild(div)
 
+            let i = 0;
             value.buttons.forEach(function(character) {
-                createButton(character, div);
+                createButton(i, character, div);
+                i++
             })
         }
 
-        function createButton(content, div) {
+        function createButton(i, content, div) {
             const button = document.createElement('button');
             button.innerHTML = content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+            button.setAttribute("index", i)
             div.appendChild(button);
         }
     }

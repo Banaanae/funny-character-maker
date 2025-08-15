@@ -5,6 +5,11 @@
     font-size: x-large;
 }
 
+
+.buttons button > input {
+    width: 70%;
+}
+
 textarea {
     font-family: Arial, Helvetica, sans-serif;
     width: 50%;
@@ -15,9 +20,24 @@ h2, p, label, sup {
     font-family: Arial;
 }
 
-textarea, .manage {
+textarea {
     display: inline-block;
+}
+
+.show {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+
+textarea, #editor, #manage {
     vertical-align: top;
+}
+
+#editor {
+    min-width: 40%;
 }
 
 #count, #multiArea {

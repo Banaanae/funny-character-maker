@@ -95,7 +95,6 @@ document.getElementById('export').addEventListener('click', async function() {
         })
         .catch(e => {
             dataStr = JSON.stringify(localStorage[selectedProfile])
-            console.log(dataStr.length)
         })
     const blob = new Blob([dataStr], { type: "application/json" })
     const url = URL.createObjectURL(blob)
