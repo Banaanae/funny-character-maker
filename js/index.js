@@ -7,9 +7,9 @@ function applyListeners() {
         let i = count.value
         while (i > 0) {
             if (!multiMode) {
-                textArea.value += getRandomChar('cat')
+                textArea.value += getRandomChar(document.getElementById('ranType').value)
             } else {
-                multiArea.value += getRandomChar('cat')
+                multiArea.value += getRandomChar(document.getElementById('ranType').value)
             }
             i--
         }
@@ -37,13 +37,36 @@ function applyListeners() {
 
 function getRandomChar(ranType) {
     let categories = document.querySelector(".buttons").children
-    let chosenCat;
-    let catFound = false
-    while (!catFound) {
-        chosenCat = Math.floor(Math.random() * categories.length)
-        if (categories[chosenCat].children[0].children[0].checked)
-            catFound = true
+
+    if (ranType === 'cat') {
+        let chosenCat;
+        let catFound = false
+        while (!catFound) {
+            chosenCat = Math.floor(Math.random() * categories.length)
+            if (categories[chosenCat].children[0].children[0].checked)
+                catFound = true
+        }
+        let ranIndex = Math.floor(Math.random() * (categories[chosenCat].childElementCount - 1)) + 1 // Index from cat start
+        return categories[chosenCat].children[ranIndex].innerText
+    } else {
+        let totalChars = 0, indexArr = [], selectedCats = []
+
+        for (let o = 0; o < categories.length; o++) {
+            let cat = categories[o]
+            if (cat.querySelector('h2 > input').checked) {
+                totalChars += cat.querySelectorAll('button').length
+                indexArr.push(totalChars)
+                selectedCats.push(cat)
+            }
+        }
+        let selectedChar = Math.ceil(Math.random() * totalChars)
+        let i = indexArr.length - 1
+        while (indexArr[i] >= selectedChar) {
+            i = i - 1
+            if (i === -1)
+                break
+        }
+        selectedChar = (i !== -1 ? selectedChar - indexArr[i] : selectedChar)
+        return selectedCats[i + 1].children[selectedChar].innerText
     }
-    let ranIndex = Math.floor(Math.random() * (categories[chosenCat].childElementCount - 1)) + 1 // Index from cat start
-    return categories[chosenCat].children[ranIndex].innerText
 }
