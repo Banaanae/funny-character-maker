@@ -90,7 +90,7 @@ function applyChanges() {
             applyAndFinalise(JSON.parse(fileContents))
         })
         .catch(e => {
-            applyAndFinalise(localStorage[selectedProfile])
+            applyAndFinalise(JSON.parse(localStorage[selectedProfile]))
         })
     
     function applyAndFinalise(dataStr) {
