@@ -7,6 +7,7 @@ function parseProfile(path) {
     return new Promise((resolve, reject) => {
         fetch(path)
             .then(response => {
+                document.getElementById('delete').setAttribute('disabled', '')
                 return response.text()
             })
             .then(fileContents => {
@@ -16,6 +17,7 @@ function parseProfile(path) {
             .catch(e => {
                 const localData = localStorage[path];
                 if (localData) {
+                    document.getElementById('delete').removeAttribute('disabled')
                     createProfile(localData)
                     resolve()
                 } else {

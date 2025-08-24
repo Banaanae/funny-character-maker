@@ -177,10 +177,3 @@ function redo() {
     else if (toRedo.type === "renamed")
         document.querySelector(`div[name="${toRedo.cat}"] > button[index="${toRedo.button}"]`).innerText = toRedo.newtext
 }
-
-function getAvailableName() {
-    let i = 1
-    return Math.random()
-    //if (!localStorage.hasOwnProperty())
-    //while
-}

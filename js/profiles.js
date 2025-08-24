@@ -107,3 +107,12 @@ document.getElementById('export').addEventListener('click', async function() {
     document.body.removeChild(a)
     URL.revokeObjectURL(url)
 })
+
+document.getElementById('delete').addEventListener('click', function () {
+    if (confirm("Are you sure you want to delete this profile?\nThis action cannot be undone!")) {
+        delete localStorage[selectedProfile]
+        document.querySelector('.profileList > a[id="' + selectedProfile + '"]').remove()
+        document.querySelector('.profileBtn').innerText = 'Default'
+        switchProfile('./chars/profiles/default.json')
+    }
+})
