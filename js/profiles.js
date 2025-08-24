@@ -10,6 +10,7 @@ async function switchProfile(newProfile) {
 createProfileOption('./chars/profiles/default.json')
 createProfileOption('./chars/profiles/full.json')
 createProfileOption('./chars/profiles/unicode.json')
+createProfileOption('./chars/profiles/R74n.json')
 
 // Add custom profiles from local storage
 for (const [profile] of Object.entries(localStorage)) {
@@ -39,8 +40,8 @@ function createProfileOption(profile) {
             prflLink.id = localName
         }
 
-        // TODO: Not hard coded
-        if (document.querySelector('.profileList').childElementCount < 3) {
+        let builtInCount = 4 // TODO: Not hard coded
+        if (document.querySelector('.profileList').childElementCount < builtInCount) {
             prflLink.addEventListener('click', function (elem) {
                 document.querySelector('.profileBtn').innerText = elem.target.innerText
                 selectedProfile = './chars/profiles/' + elem.target.id + '.json'

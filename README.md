@@ -22,6 +22,14 @@ All the different categories of characters have been sorted into their own files
 - [All Characters (HTML)](chars/txt/AllChars_HTML.txt)
 - [All Characters (Unicode)](chars/txt/AllChars_Unicode.txt)
 
+### Profiles
+
+Some profiles are built into the app, being:
+
+- **Default**: All characters that display correctly with english language packs, sorted based on behaviour. *It is recommended to use the simple editor here to remove characters don't display correctly on your device.*
+- **Full**: Same as default, but has an extra "Spare" category for combining unicode characters that don't display correctly (as an empty box or box with its unicode identifier). Useful if you have additional langauge packs which allow other characters to display correctly.
+- **Unicode**: Characters sorted based on their unicode "Combining Class". *(Not Reordered has been omitted for obvious reasons)*
+- **R74n**: All characters present in [R74n.com](https://c.R74n.com/combining) sorted into the same categories.
 
 ### Footnotes
 
