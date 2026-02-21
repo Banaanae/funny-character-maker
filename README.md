@@ -33,7 +33,7 @@ Some profiles are built into the app, being:
 
 ### Footnotes
 
-Many of these characters have been sorted quite subjectively, so many of these characters have different interactions between speccific characters. I have attempted to sort them by their most common behaviour, but support between devices varies.
+Many of these characters have been sorted quite subjectively, so many of these characters have different interactions between specific characters. I have attempted to sort them by their most common behaviour, but support between devices varies.
 
 More specifically, some characters may behave differently when the preceeding character is a whitespace (or nothing), I sorted based on the behaviour of when a latin letter was preceeding. Additionally many characters won't render correctly, instead falling back to a box with its unicode code. Problematic characters were placed into the "Spare" category (under the full profile) 
 
@@ -86,3 +86,4 @@ If not, place all characters in a "To Sort" category, then sort based on desired
 
 - [R74n.com](https://c.r74n.com/combining) - Original concept and some characters
 - [UnicodePlus](https://unicodeplus.com/combining) - Got the remaining characters from here
+
